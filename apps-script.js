@@ -63,6 +63,7 @@ function doGet(e) {
         'Telegram Username',
         'Experience Level',
         'NAHIMS Student',
+        'Referred By',
         'Confirmed Follow'
       ];
       sheet.appendRow(headers);
@@ -86,6 +87,7 @@ function doGet(e) {
       p.telegram   || '',
       p.experience || '',
       p.nahims     || 'No',
+      p.referredBy || 'None',
       p.confirmed  || 'No'
     ]);
 

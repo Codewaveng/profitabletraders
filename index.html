@@ -369,10 +369,89 @@
     }
     .form-privacy i { margin-right: 3px; }
 
+    /* referral field */
+    .badge-optional {
+      display: inline-block;
+      background: rgba(212,175,55,.15);
+      border: 1px solid var(--border);
+      color: var(--gold);
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .1rem .45rem;
+      border-radius: 4px;
+      margin-left: .4rem;
+      vertical-align: middle;
+    }
+    .ref-hint {
+      font-size: .74rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-top: .4rem;
+      display: flex;
+      align-items: flex-start;
+      gap: .4rem;
+    }
+    .ref-hint i { color: var(--gold); margin-top: .1rem; flex-shrink: 0; }
+
+    /* referral link box (shown after submit) */
+    .ref-link-box {
+      margin-top: 1.2rem;
+      background: #0D0D0D;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+    .ref-link-label {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--gold);
+      margin-bottom: .25rem;
+    }
+    .ref-link-label i { margin-right: 4px; }
+    .ref-link-note {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-bottom: .65rem;
+      line-height: 1.5;
+    }
+    .ref-link-row {
+      display: flex;
+      gap: .5rem;
+    }
+    .ref-link-row input {
+      flex: 1;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: .55rem .75rem;
+      color: var(--text);
+      font-size: .76rem;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      cursor: text;
+    }
+    .ref-copy-btn {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--black);
+      border: none;
+      border-radius: 7px;
+      padding: .55rem .9rem;
+      font-size: .76rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity .15s;
+    }
+    .ref-copy-btn:hover { opacity: .88; }
+
     .success-wrap {
       display: none;
       text-align: center;
-      padding: 1.5rem 0;
+      padding: 1rem 0 .5rem;
     }
     .success-wrap .s-icon {
       width: 72px; height: 72px;
@@ -855,6 +934,18 @@
           </select>
         </div>
 
+        <div class="fgroup">
+          <label for="f-ref">
+            <i class="fa-solid fa-user-plus"></i> Referred By
+            <span class="badge-optional">Optional</span>
+          </label>
+          <input type="text" id="f-ref" name="referredBy" placeholder="X username of who referred you (e.g. @username)" />
+          <p class="ref-hint">
+            <i class="fa-solid fa-circle-info"></i>
+            A referral boosts your chances of getting in — but it is not compulsory. A strong, valid application can get in on its own.
+          </p>
+        </div>
+
         <label class="chk-row" for="f-nahims">
           <input type="checkbox" id="f-nahims" name="nahims" />
           <span class="chk-text">
@@ -866,7 +957,7 @@
           <input type="checkbox" id="f-confirm" name="confirmed" required />
           <span class="chk-text">
             I have followed <strong>@Ginox_Official</strong> on X and joined the
-            <strong>Ginox_Official</strong> Telegram channel
+            <strong>Ginox_Official</strong> Telegram channel — this is required. Make sure you have done both before submitting.
           </span>
         </label>
 
@@ -888,8 +979,18 @@
       <h3>You Are in the Queue</h3>
       <p>
         Your application has been received. We will review your details and confirm your spot
-        via email. Keep following <strong>@Ginox_Official</strong> for updates and announcements.
+        via email. Keep following <strong>@Ginox_Official</strong> for updates.
       </p>
+      <div class="ref-link-box" id="ref-link-box">
+        <p class="ref-link-label"><i class="fa-solid fa-link"></i> Your Referral Link</p>
+        <p class="ref-link-note">Share this with friends — every referral increases your chances of being selected.</p>
+        <div class="ref-link-row">
+          <input type="text" id="ref-link-input" readonly />
+          <button class="ref-copy-btn" onclick="copyRefLink()">
+            <i class="fa-regular fa-copy"></i> Copy
+          </button>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -1135,12 +1236,20 @@
     setInterval(tick, 1000);
   })();
 
+  /* ─── AUTO-FILL REFERRAL FROM URL ─── */
+  (function () {
+    var urlParams = new URLSearchParams(window.location.search);
+    var ref = urlParams.get('ref');
+    if (ref) {
+      var refField = document.getElementById('f-ref');
+      refField.value = ref.startsWith('@') ? ref : '@' + ref;
+      refField.style.borderColor = 'var(--gold)';
+    }
+  })();
+
   /* ─── FORM SUBMIT ─── */
-  /*
-   * Replace the placeholder below with your deployed Google Apps Script URL.
-   * Instructions are in apps-script.js.
-   */
   var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzHn2g85BCZSnfAjV6Hg9RxyMRo1ZuSDIwhU1U2OlFUKsTKFrcEK_ZWh7ifq5B8tPQ/exec';
+  var BASE_URL   = 'https://codewaveng.github.io/profitabletraders/';
 
   document.getElementById('reg-form').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -1155,24 +1264,48 @@
     btn.textContent = 'Submitting…';
     btn.disabled = true;
 
+    var xUsername  = document.getElementById('f-x').value.trim();
+    var referredBy = document.getElementById('f-ref').value.trim();
+
     var params = new URLSearchParams({
       fullName:   document.getElementById('f-name').value.trim(),
       email:      document.getElementById('f-email').value.trim(),
       phone:      document.getElementById('f-phone').value.trim(),
-      xUsername:  document.getElementById('f-x').value.trim(),
+      xUsername:  xUsername,
       telegram:   document.getElementById('f-tg').value.trim(),
       experience: document.getElementById('f-exp').value,
       nahims:     document.getElementById('f-nahims').checked ? 'Yes' : 'No',
+      referredBy: referredBy || 'None',
       confirmed:  'Yes'
     });
 
     fetch(SCRIPT_URL + '?' + params.toString(), { method: 'GET', mode: 'no-cors' })
       .catch(function () { /* opaque no-cors response is expected */ })
       .finally(function () {
+        /* build referral link from their X username */
+        var handle = xUsername.replace(/^@/, '');
+        var refLink = BASE_URL + (handle ? '?ref=' + encodeURIComponent('@' + handle) : '');
+        document.getElementById('ref-link-input').value = refLink;
+
         document.getElementById('form-body').style.display = 'none';
         document.getElementById('success-wrap').style.display = 'block';
       });
   });
+
+  /* ─── COPY REFERRAL LINK ─── */
+  function copyRefLink() {
+    var input = document.getElementById('ref-link-input');
+    input.select();
+    input.setSelectionRange(0, 9999);
+    navigator.clipboard.writeText(input.value).catch(function () {
+      document.execCommand('copy');
+    });
+    var btn = document.querySelector('.ref-copy-btn');
+    btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied';
+    setTimeout(function () {
+      btn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy';
+    }, 2000);
+  }
 </script>
 
 </body>
