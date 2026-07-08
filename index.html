@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Profitable Trader — PT Cohort July 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,11 +26,13 @@
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--black);
       color: var(--text);
       line-height: 1.65;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* ─── UTILITY ─────────────────────── */
@@ -60,10 +62,11 @@
     }
 
     .section-heading {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.9rem, 3.5vw, 3rem);
-      font-weight: 900;
-      line-height: 1.18;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -.01em;
       margin-bottom: .9rem;
     }
 
@@ -101,11 +104,12 @@
       border-radius: 6px;
     }
     .nav-brand span {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
       font-weight: 700;
+      font-style: italic;
       color: var(--gold);
-      letter-spacing: .02em;
+      letter-spacing: .01em;
     }
 
     .nav-pill {
@@ -159,10 +163,11 @@
     }
 
     .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.3rem, 4vw, 3.9rem);
-      font-weight: 900;
-      line-height: 1.12;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5.5vw, 5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -.02em;
       margin-bottom: 1.4rem;
     }
 
@@ -235,11 +240,12 @@
     }
     .cd-num {
       display: block;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.7rem;
-      font-weight: 900;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
       color: var(--gold);
       line-height: 1;
+      letter-spacing: -.02em;
     }
     .cd-lbl {
       display: block;
@@ -269,9 +275,10 @@
     }
 
     .form-hed {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.45rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
       font-weight: 700;
+      letter-spacing: -.01em;
       margin-bottom: .25rem;
     }
     .form-sub {
@@ -302,7 +309,7 @@
       border-radius: 9px;
       padding: .72rem 1rem;
       color: var(--text);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: .88rem;
       outline: none;
       transition: border-color .18s;
@@ -347,7 +354,7 @@
       padding: .95rem;
       background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 55%, var(--gold-light) 100%);
       color: var(--black);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       font-size: .92rem;
       font-weight: 800;
       letter-spacing: .06em;
@@ -430,7 +437,7 @@
       padding: .55rem .75rem;
       color: var(--text);
       font-size: .76rem;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       outline: none;
       cursor: text;
     }
@@ -465,8 +472,10 @@
     }
     .success-wrap .s-icon i { font-size: 1.8rem; color: var(--gold); }
     .success-wrap h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -.01em;
       margin-bottom: .5rem;
     }
     .success-wrap p { font-size: .85rem; color: var(--muted); line-height: 1.65; }
@@ -486,17 +495,18 @@
     }
     .stat:last-child { border-right: none; }
     .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
-      font-weight: 900;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 700;
       line-height: 1;
+      letter-spacing: -.02em;
       margin-bottom: .35rem;
       background: linear-gradient(135deg, var(--gold-dark), var(--gold));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .stat-lbl { font-size: .8rem; color: var(--muted); font-weight: 500; }
+    .stat-lbl { font-size: .78rem; color: var(--muted); font-weight: 500; letter-spacing: .04em; text-transform: uppercase; }
 
     /* ─── GENERIC SECTION ─────────────── */
     .sec { padding: 5.5rem 5%; }
@@ -561,7 +571,7 @@
       background: var(--gold);
       color: var(--black);
       font-size: .58rem;
-      font-weight: 900;
+      font-weight: 700;
       letter-spacing: .12em;
       padding: .22rem 2rem;
       transform: rotate(35deg);
@@ -592,13 +602,14 @@
     .ico-bronze i { color: #CD7F32; font-size: 1.7rem; }
 
     .prize-amount {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
-      font-weight: 900;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 700;
       line-height: 1;
+      letter-spacing: -.02em;
       margin-bottom: .4rem;
     }
-    .prize-card.p1 .prize-amount { font-size: 3rem; color: var(--gold); }
+    .prize-card.p1 .prize-amount { font-size: 3.6rem; color: var(--gold); }
     .prize-card.p2 .prize-amount { color: #C0C0C0; }
     .prize-card.p3 .prize-amount { color: #CD7F32; }
 
@@ -626,9 +637,10 @@
     }
     .cap-ico i { font-size: 2.1rem; color: var(--gold); }
     .cap-copy h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.55rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
       font-weight: 700;
+      letter-spacing: -.01em;
       margin-bottom: .5rem;
     }
     .cap-copy p { font-size: .9rem; color: var(--muted); line-height: 1.68; }
@@ -650,9 +662,9 @@
     .day-card:hover { border-color: var(--gold); }
 
     .day-num {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 4.5rem;
-      font-weight: 900;
+      font-weight: 700;
       color: var(--gold);
       opacity: .12;
       line-height: 1;
@@ -716,9 +728,10 @@
     }
     .partner-copy { flex: 1; }
     .partner-copy h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.65rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
       font-weight: 700;
+      letter-spacing: -.01em;
       margin-bottom: .7rem;
     }
     .partner-copy p { font-size: .92rem; color: var(--muted); line-height: 1.7; }
@@ -734,7 +747,7 @@
     }
     .partner-badge strong {
       display: block;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-size: 1.4rem;
       color: var(--gold);
       margin-bottom: .25rem;
@@ -754,9 +767,11 @@
       background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,175,55,.07) 0%, transparent 75%);
     }
     .cta-sec h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3.4rem);
-      font-weight: 900;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 700;
+      letter-spacing: -.02em;
+      line-height: 1.05;
       margin-bottom: 1rem;
     }
     .cta-sec p { font-size: .97rem; color: var(--muted); margin-bottom: 2.2rem; }
