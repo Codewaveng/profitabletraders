@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profitable Trader — PT Cohort July 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:        #D4AF37;
+      --gold-light:  #F9E784;
+      --gold-dark:   #B8860B;
+      --gold-muted:  rgba(212,175,55,.12);
+      --black:       #080808;
+      --dark:        #0F0F0F;
+      --card:        #131313;
+      --border:      rgba(212,175,55,.22);
+      --text:        #F0F0F0;
+      --muted:       #7A7A7A;
+      --danger:      #E05252;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--black);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ─── UTILITY ─────────────────────── */
+    .gold-text {
+      background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 45%, var(--gold-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--gold);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .section-tag::before {
+      content: '';
+      width: 22px; height: 2px;
+      background: var(--gold);
+      display: block;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.18;
+      margin-bottom: .9rem;
+    }
+
+    .section-sub {
+      font-size: .97rem;
+      color: var(--muted);
+      line-height: 1.72;
+      max-width: 560px;
+      margin-bottom: 2.8rem;
+    }
+
+    /* ─── NAV ─────────────────────────── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .9rem 5%;
+      background: rgba(8,8,8,.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .nav-brand img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+    .nav-brand span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: .02em;
+    }
+
+    .nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--black);
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .35rem .95rem;
+      border-radius: 100px;
+    }
+
+    /* ─── HERO ────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      padding: 8rem 5% 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 0% 40%, rgba(212,175,55,.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      background: var(--gold-muted);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: .38rem 1rem;
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.3rem, 4vw, 3.9rem);
+      font-weight: 900;
+      line-height: 1.12;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.72;
+      max-width: 500px;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      font-size: .88rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .hero-meta span i { color: var(--gold); font-size: .85rem; }
+
+    .scarcity-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: rgba(224,82,82,.1);
+      border: 1px solid rgba(224,82,82,.3);
+      border-radius: 7px;
+      padding: .4rem 1rem;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--danger);
+      margin-bottom: 1.5rem;
+    }
+    .scarcity-bar .blink {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--danger);
+      animation: blink 1.4s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+    .countdown-label {
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--muted);
+      margin-bottom: .55rem;
+    }
+
+    .countdown {
+      display: flex;
+      gap: .75rem;
+      margin-bottom: 0;
+    }
+    .cd-unit {
+      text-align: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: .55rem .85rem;
+      min-width: 60px;
+    }
+    .cd-num {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .cd-lbl {
+      display: block;
+      font-size: .58rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--muted);
+      margin-top: .25rem;
+    }
+
+    /* ─── FORM CARD ───────────────────── */
+    .form-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2.2rem;
+      position: relative;
+      box-shadow: 0 0 80px rgba(212,175,55,.05);
+    }
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      border-radius: 18px 18px 0 0;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold-dark));
+    }
+
+    .form-hed {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: .25rem;
+    }
+    .form-sub {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .fgroup {
+      margin-bottom: .95rem;
+    }
+    .fgroup label {
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .38rem;
+    }
+    .fgroup label i { margin-right: 3px; }
+
+    .fgroup input,
+    .fgroup select {
+      width: 100%;
+      background: #0D0D0D;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 9px;
+      padding: .72rem 1rem;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: .88rem;
+      outline: none;
+      transition: border-color .18s;
+      -webkit-appearance: none;
+    }
+    .fgroup input::placeholder { color: #444; }
+    .fgroup input:focus,
+    .fgroup select:focus { border-color: var(--gold); }
+    .fgroup select option { background: #111; }
+
+    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+
+    .chk-row {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      background: #0D0D0D;
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 9px;
+      padding: .85rem;
+      margin-bottom: .75rem;
+      cursor: pointer;
+      transition: border-color .18s;
+    }
+    .chk-row:hover { border-color: var(--border); }
+    .chk-row input[type="checkbox"] {
+      width: 17px; height: 17px;
+      min-width: 17px;
+      accent-color: var(--gold);
+      margin-top: 2px;
+      cursor: pointer;
+    }
+    .chk-row .chk-text {
+      font-size: .81rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .chk-row .chk-text strong { color: var(--gold); }
+
+    .btn-submit {
+      width: 100%;
+      padding: .95rem;
+      background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 55%, var(--gold-light) 100%);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: .92rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 9px;
+      cursor: pointer;
+      transition: opacity .18s, transform .18s;
+      margin-top: .3rem;
+    }
+    .btn-submit:hover { opacity: .9; transform: translateY(-2px); }
+    .btn-submit:disabled { opacity: .55; cursor: not-allowed; transform: none; }
+
+    .form-privacy {
+      text-align: center;
+      font-size: .7rem;
+      color: var(--muted);
+      margin-top: .7rem;
+    }
+    .form-privacy i { margin-right: 3px; }
+
+    .success-wrap {
+      display: none;
+      text-align: center;
+      padding: 1.5rem 0;
+    }
+    .success-wrap .s-icon {
+      width: 72px; height: 72px;
+      background: rgba(212,175,55,.12);
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+    }
+    .success-wrap .s-icon i { font-size: 1.8rem; color: var(--gold); }
+    .success-wrap h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: .5rem;
+    }
+    .success-wrap p { font-size: .85rem; color: var(--muted); line-height: 1.65; }
+
+    /* ─── STATS BAR ───────────────────── */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stat {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: .35rem;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-lbl { font-size: .8rem; color: var(--muted); font-weight: 500; }
+
+    /* ─── GENERIC SECTION ─────────────── */
+    .sec { padding: 5.5rem 5%; }
+    .sec-alt { background: var(--dark); }
+
+    /* ─── CARDS GRID ──────────────────── */
+    .cards-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .feat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 1.8rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .feat-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+
+    .feat-icon {
+      width: 46px; height: 46px;
+      background: var(--gold-muted);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .feat-icon i { color: var(--gold); font-size: 1.1rem; }
+
+    .feat-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .45rem; }
+    .feat-card p { font-size: .85rem; color: var(--muted); line-height: 1.62; }
+
+    /* ─── PRIZES ──────────────────────── */
+    .prizes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .prize-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.2rem 1.8rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .prize-card.p1 {
+      border-color: var(--gold);
+      background: linear-gradient(160deg, #150F00 0%, var(--card) 60%);
+    }
+    .prize-card.p1::after {
+      content: 'TOP PRIZE';
+      position: absolute;
+      top: 14px; right: -26px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: .58rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      padding: .22rem 2rem;
+      transform: rotate(35deg);
+    }
+
+    .prize-rank {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .prize-ico {
+      width: 66px; height: 66px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .ico-gold { background: rgba(212,175,55,.12); border: 2px solid var(--gold); }
+    .ico-gold i { color: var(--gold); font-size: 1.7rem; }
+    .ico-silver { background: rgba(192,192,192,.1); border: 2px solid #C0C0C0; }
+    .ico-silver i { color: #C0C0C0; font-size: 1.7rem; }
+    .ico-bronze { background: rgba(205,127,50,.1); border: 2px solid #CD7F32; }
+    .ico-bronze i { color: #CD7F32; font-size: 1.7rem; }
+
+    .prize-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: .4rem;
+    }
+    .prize-card.p1 .prize-amount { font-size: 3rem; color: var(--gold); }
+    .prize-card.p2 .prize-amount { color: #C0C0C0; }
+    .prize-card.p3 .prize-amount { color: #CD7F32; }
+
+    .prize-note { font-size: .8rem; color: var(--muted); line-height: 1.55; }
+
+    /* Capital banner */
+    .capital-band {
+      background: linear-gradient(135deg, #0E0900 0%, #1A1200 100%);
+      border: 1px solid var(--gold);
+      border-radius: 16px;
+      padding: 2.5rem 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+    .cap-ico {
+      width: 82px; height: 82px;
+      min-width: 82px;
+      background: var(--gold-muted);
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cap-ico i { font-size: 2.1rem; color: var(--gold); }
+    .cap-copy h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+    .cap-copy p { font-size: .9rem; color: var(--muted); line-height: 1.68; }
+
+    /* ─── SCHEDULE ────────────────────── */
+    .days-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .day-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 2rem 1.8rem;
+      position: relative;
+    }
+    .day-card:hover { border-color: var(--gold); }
+
+    .day-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      font-weight: 900;
+      color: var(--gold);
+      opacity: .12;
+      line-height: 1;
+      margin-bottom: .3rem;
+    }
+    .day-date {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .6rem;
+    }
+    .day-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: .45rem;
+    }
+    .day-desc { font-size: .84rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── REQUIREMENTS ────────────────── */
+    .req-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .req-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      padding: 1.8rem;
+    }
+    .req-card:hover { border-color: var(--gold); }
+
+    .req-ico {
+      width: 46px; height: 46px;
+      background: var(--gold-muted);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+    }
+    .req-ico i { color: var(--gold); font-size: 1.1rem; }
+    .req-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .45rem; }
+    .req-card p { font-size: .84rem; color: var(--muted); line-height: 1.6; }
+    .req-card a { color: var(--gold); text-decoration: none; font-weight: 600; }
+    .req-card a:hover { text-decoration: underline; }
+
+    /* ─── PARTNERSHIP ─────────────────── */
+    .partner-wrap {
+      display: flex;
+      align-items: center;
+      gap: 3.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem 3.5rem;
+    }
+    .partner-copy { flex: 1; }
+    .partner-copy h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      margin-bottom: .7rem;
+    }
+    .partner-copy p { font-size: .92rem; color: var(--muted); line-height: 1.7; }
+    .partner-copy p + p { margin-top: .7rem; }
+
+    .partner-badge {
+      flex-shrink: 0;
+      background: var(--gold-muted);
+      border: 2px solid var(--gold);
+      border-radius: 14px;
+      padding: 1.6rem 2.2rem;
+      text-align: center;
+    }
+    .partner-badge strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-bottom: .25rem;
+    }
+    .partner-badge small {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ─── FINAL CTA ───────────────────── */
+    .cta-sec {
+      padding: 6rem 5%;
+      text-align: center;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,175,55,.07) 0%, transparent 75%);
+    }
+    .cta-sec h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+    .cta-sec p { font-size: .97rem; color: var(--muted); margin-bottom: 2.2rem; }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--black);
+      font-weight: 800;
+      font-size: .9rem;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: .9rem 2.2rem;
+      border-radius: 9px;
+      text-decoration: none;
+      transition: opacity .18s, transform .18s;
+    }
+    .btn-gold:hover { opacity: .88; transform: translateY(-2px); }
+
+    /* ─── FOOTER ──────────────────────── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 1.8rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    footer p { font-size: .78rem; color: var(--muted); }
+    .foot-links { display: flex; gap: 1.5rem; }
+    .foot-links a {
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      transition: color .18s;
+    }
+    .foot-links a:hover { color: var(--gold); }
+
+    /* ─── RESPONSIVE ──────────────────── */
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; padding: 7rem 5% 4rem; }
+      .hero h1 { max-width: 620px; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(2) { border-right: none; }
+      .stat:nth-child(3) { border-top: 1px solid var(--border); }
+      .stat:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
+      .cards-3,
+      .prizes-grid,
+      .days-grid,
+      .req-grid { grid-template-columns: 1fr; }
+      .capital-band { flex-direction: column; text-align: center; }
+      .partner-wrap { flex-direction: column; text-align: center; }
+      .frow { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      nav { padding: .75rem 4%; }
+      .nav-brand span { display: none; }
+      .hero { padding: 6rem 4% 3.5rem; gap: 2.5rem; }
+      .sec { padding: 4rem 4%; }
+      .countdown { gap: .5rem; }
+      .cd-unit { min-width: 52px; padding: .45rem .65rem; }
+      .cd-num { font-size: 1.4rem; }
+      .form-card { padding: 1.5rem; }
+      .partner-wrap,
+      .capital-band { padding: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════ NAV ════════════════════════════ -->
+<nav>
+  <div class="nav-brand">
+    <img src="logo.jpg" alt="Profitable Trader logo" />
+    <span>Profitable Trader</span>
+  </div>
+  <div class="nav-pill">
+    <i class="fa-solid fa-fire"></i>
+    200 Spots Only
+  </div>
+</nav>
+
+<!-- ════ HERO ════════════════════════════ -->
+<section class="hero" id="top">
+
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <i class="fa-solid fa-chart-line"></i>
+      PT Cohort &nbsp;&mdash;&nbsp; July 2026
+    </div>
+
+    <h1>
+      200 Traders.<br />
+      3 Days.<br />
+      <span class="gold-text">One System That<br />Actually Works.</span>
+    </h1>
+
+    <p class="hero-desc">
+      We are handpicking the next 200 students for a live, intensive trading cohort.
+      At the end, the top 3 performers share a $1,000 prize pool — and 3 others trade
+      with real funded capital.
+    </p>
+
+    <div class="scarcity-bar">
+      <span class="blink"></span>
+      200 Spots Available &mdash; Class Closes When Full
+    </div>
+
+    <div class="hero-meta">
+      <span><i class="fa-regular fa-calendar"></i> July 13 &ndash; 15, 2026</span>
+      <span><i class="fa-solid fa-graduation-cap"></i> 200 Students Max</span>
+      <span><i class="fa-solid fa-trophy"></i> $1,000 Prize Pool</span>
+    </div>
+
+    <p class="countdown-label">Class starts in</p>
+    <div class="countdown">
+      <div class="cd-unit"><span class="cd-num" id="cd-d">00</span><span class="cd-lbl">Days</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-h">00</span><span class="cd-lbl">Hours</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-m">00</span><span class="cd-lbl">Mins</span></div>
+      <div class="cd-unit"><span class="cd-num" id="cd-s">00</span><span class="cd-lbl">Secs</span></div>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-card" id="register">
+
+    <div id="form-body">
+      <p class="form-hed">Reserve Your Spot</p>
+      <p class="form-sub">Fill every field accurately. We review all submissions before confirming.</p>
+
+      <form id="reg-form" novalidate>
+
+        <div class="frow">
+          <div class="fgroup">
+            <label for="f-name"><i class="fa-regular fa-user"></i> Full Name</label>
+            <input type="text" id="f-name" name="fullName" placeholder="Your full name" required />
+          </div>
+          <div class="fgroup">
+            <label for="f-phone"><i class="fa-solid fa-phone"></i> Phone</label>
+            <input type="tel" id="f-phone" name="phone" placeholder="+234 000 0000000" required />
+          </div>
+        </div>
+
+        <div class="fgroup">
+          <label for="f-email"><i class="fa-regular fa-envelope"></i> Email Address</label>
+          <input type="email" id="f-email" name="email" placeholder="your@email.com" required />
+        </div>
+
+        <div class="frow">
+          <div class="fgroup">
+            <label for="f-x"><i class="fa-brands fa-x-twitter"></i> X Username</label>
+            <input type="text" id="f-x" name="xUsername" placeholder="@username" required />
+          </div>
+          <div class="fgroup">
+            <label for="f-tg"><i class="fa-brands fa-telegram"></i> Telegram Username</label>
+            <input type="text" id="f-tg" name="telegram" placeholder="@username" required />
+          </div>
+        </div>
+
+        <div class="fgroup">
+          <label for="f-exp"><i class="fa-solid fa-chart-bar"></i> Trading Experience</label>
+          <select id="f-exp" name="experience" required>
+            <option value="" disabled selected>Select your level</option>
+            <option value="Beginner">Beginner &mdash; Just starting out</option>
+            <option value="Intermediate">Intermediate &mdash; Some experience</option>
+            <option value="Advanced">Advanced &mdash; Actively trading</option>
+          </select>
+        </div>
+
+        <label class="chk-row" for="f-nahims">
+          <input type="checkbox" id="f-nahims" name="nahims" />
+          <span class="chk-text">
+            I am currently a student of <strong>NAHIMS SW</strong>
+          </span>
+        </label>
+
+        <label class="chk-row" for="f-confirm">
+          <input type="checkbox" id="f-confirm" name="confirmed" required />
+          <span class="chk-text">
+            I have followed <strong>@Ginox_Official</strong> on X and joined the
+            <strong>Ginox_Official</strong> Telegram channel
+          </span>
+        </label>
+
+        <button type="submit" class="btn-submit" id="sub-btn">
+          <i class="fa-solid fa-lock" style="margin-right:6px;"></i>
+          Secure My Spot Now
+        </button>
+
+        <p class="form-privacy">
+          <i class="fa-solid fa-shield-halved"></i>
+          Your information is kept private and will never be shared.
+        </p>
+
+      </form>
+    </div>
+
+    <div class="success-wrap" id="success-wrap">
+      <div class="s-icon"><i class="fa-solid fa-circle-check"></i></div>
+      <h3>You Are in the Queue</h3>
+      <p>
+        Your application has been received. We will review your details and confirm your spot
+        via email. Keep following <strong>@Ginox_Official</strong> for updates and announcements.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ════ STATS BAR ═══════════════════════ -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">200</div>
+    <div class="stat-lbl">Students Selected</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">3</div>
+    <div class="stat-lbl">Days of Live Training</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">$1K</div>
+    <div class="stat-lbl">Prize Pool</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">3</div>
+    <div class="stat-lbl">Traders Get Funded</div>
+  </div>
+</div>
+
+<!-- ════ PROGRAM ═════════════════════════ -->
+<section class="sec">
+  <div class="section-tag">The Program</div>
+  <h2 class="section-heading">Stop Guessing.<br />Start Trading With a System.</h2>
+  <p class="section-sub">
+    Most people fail in trading not from lack of effort — they fail because they never had the right
+    framework. In 3 focused days, we hand you the one.
+  </p>
+
+  <div class="cards-3">
+    <div class="feat-card">
+      <div class="feat-icon"><i class="fa-solid fa-chart-line"></i></div>
+      <h3>Live Market Analysis</h3>
+      <p>Watch real trades set up and executed in live conditions. No theory without practice, no slides without screen time.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><i class="fa-solid fa-brain"></i></div>
+      <h3>Trading Psychology</h3>
+      <p>Understand how to manage emotions, control risk, and stay disciplined when markets move against you.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><i class="fa-solid fa-crosshairs"></i></div>
+      <h3>Entry and Exit Mastery</h3>
+      <p>Precise strategies for identifying high-probability setups and knowing exactly when to get in and when to get out.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <h3>Risk Management</h3>
+      <p>The framework professionals use to protect capital while remaining positioned for large, asymmetric moves.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><i class="fa-solid fa-gauge-high"></i></div>
+      <h3>Trade Management</h3>
+      <p>How to manage open positions, trail stop-losses, and extract maximum profit from your winning trades.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><i class="fa-solid fa-users"></i></div>
+      <h3>Community Access</h3>
+      <p>Join a network of serious traders beyond the 3 days — accountability, setups, and ongoing market commentary.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PRIZES ══════════════════════════ -->
+<section class="sec sec-alt">
+  <div class="section-tag">Rewards</div>
+  <h2 class="section-heading">Win Real Money.<br />Trade Real Capital.</h2>
+  <p class="section-sub">
+    Performance is rewarded. The top 3 traders at the end of the cohort share $1,000 — and 3 selected
+    students will receive funded capital to continue trading long after the class ends.
+  </p>
+
+  <div class="prizes-grid">
+    <div class="prize-card p1">
+      <div class="prize-rank">1st Place</div>
+      <div class="prize-ico ico-gold"><i class="fa-solid fa-trophy"></i></div>
+      <div class="prize-amount">$500</div>
+      <p class="prize-note">The highest-performing trader takes home five hundred dollars, paid directly.</p>
+    </div>
+    <div class="prize-card p2">
+      <div class="prize-rank">2nd Place</div>
+      <div class="prize-ico ico-silver"><i class="fa-solid fa-medal"></i></div>
+      <div class="prize-amount">$300</div>
+      <p class="prize-note">Second place earns three hundred dollars.</p>
+    </div>
+    <div class="prize-card p3">
+      <div class="prize-rank">3rd Place</div>
+      <div class="prize-ico ico-bronze"><i class="fa-solid fa-award"></i></div>
+      <div class="prize-amount">$200</div>
+      <p class="prize-note">Third place takes home two hundred dollars.</p>
+    </div>
+  </div>
+
+  <div class="capital-band">
+    <div class="cap-ico"><i class="fa-solid fa-sack-dollar"></i></div>
+    <div class="cap-copy">
+      <h3>3 Students Receive Funded Capital</h3>
+      <p>
+        Beyond the prize pool — three outstanding students will be selected to trade with real,
+        funded capital. This is not a consolation prize. This is the next chapter for those who
+        demonstrate genuine skill and discipline across the 3 days.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ SCHEDULE ════════════════════════ -->
+<section class="sec">
+  <div class="section-tag">Schedule</div>
+  <h2 class="section-heading">Three Days.<br />One Permanent Shift.</h2>
+  <p class="section-sub">July 13&ndash;15, 2026. Mark the dates. Clear the calendar. Show up ready to learn.</p>
+
+  <div class="days-grid">
+    <div class="day-card">
+      <div class="day-num">01</div>
+      <div class="day-date">Monday, July 13</div>
+      <div class="day-title">Foundation and Mindset</div>
+      <p class="day-desc">Understanding how markets move, building the right trader mindset, and setting up your environment the correct way from day one.</p>
+    </div>
+    <div class="day-card">
+      <div class="day-num">02</div>
+      <div class="day-date">Tuesday, July 14</div>
+      <div class="day-title">Strategy and Execution</div>
+      <p class="day-desc">Deep-dive into entry signals, trade setups, risk management frameworks, and live examples in real market conditions.</p>
+    </div>
+    <div class="day-card">
+      <div class="day-num">03</div>
+      <div class="day-date">Wednesday, July 15</div>
+      <div class="day-title">Live Trading and Assessment</div>
+      <p class="day-desc">Apply everything learned. Top performers are identified here — prizes and funded capital are awarded based on this session.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ REQUIREMENTS ════════════════════ -->
+<section class="sec sec-alt">
+  <div class="section-tag">Entry Requirements</div>
+  <h2 class="section-heading">Three Steps to Get In.</h2>
+  <p class="section-sub">
+    Spots are limited to 200. Meeting these requirements qualifies you to be reviewed —
+    all three must be completed before your application is considered.
+  </p>
+
+  <div class="req-grid">
+    <div class="req-card">
+      <div class="req-ico"><i class="fa-brands fa-x-twitter"></i></div>
+      <h3>Follow on X</h3>
+      <p>Follow <a href="https://x.com/Ginox_Official" target="_blank" rel="noopener">@Ginox_Official</a> on X (Twitter). This is mandatory and will be verified during the review process.</p>
+    </div>
+    <div class="req-card">
+      <div class="req-ico"><i class="fa-brands fa-telegram"></i></div>
+      <h3>Join the Telegram</h3>
+      <p>Join <a href="https://t.me/Ginox_Official" target="_blank" rel="noopener">Ginox_Official</a> on Telegram. All cohort updates, schedules, and communication happen through this channel.</p>
+    </div>
+    <div class="req-card">
+      <div class="req-ico"><i class="fa-solid fa-file-pen"></i></div>
+      <h3>Complete This Form</h3>
+      <p>Fill the registration form on this page with accurate, complete information. Submissions with false or missing details will not be reviewed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PARTNERSHIP ═════════════════════ -->
+<section class="sec">
+  <div class="section-tag">Partnership</div>
+  <div class="partner-wrap">
+    <div class="partner-copy">
+      <h3>Proudly Partnering with NAHIMS SW</h3>
+      <p>
+        Profitable Trader is in official partnership with NAHIMS SW. If you are a current NAHIMS student,
+        please indicate this when completing your registration form.
+      </p>
+      <p>
+        This partnership exists to recognise students who are already actively investing in their education
+        and future. Identifying your NAHIMS status accurately helps us tailor the cohort experience and
+        acknowledge your existing commitment to learning.
+      </p>
+    </div>
+    <div class="partner-badge">
+      <strong>NAHIMS SW</strong>
+      <small>Official Partner</small>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FINAL CTA ════════════════════════ -->
+<section class="cta-sec">
+  <div class="section-tag" style="justify-content:center;">Limited Availability</div>
+  <h2>
+    The <span class="gold-text">Next 200</span><br />Start Here.
+  </h2>
+  <p>When these spots are filled, they are gone. The class runs July 13&ndash;15 and will not be repeated.</p>
+  <a href="#register" class="btn-gold">
+    <i class="fa-solid fa-arrow-up"></i>
+    Secure My Spot
+  </a>
+</section>
+
+<!-- ════ FOOTER ══════════════════════════ -->
+<footer>
+  <p>&copy; 2026 Profitable Trader. All rights reserved.</p>
+  <div class="foot-links">
+    <a href="https://x.com/Ginox_Official" target="_blank" rel="noopener">
+      <i class="fa-brands fa-x-twitter"></i> @Ginox_Official
+    </a>
+    <a href="https://t.me/Ginox_Official" target="_blank" rel="noopener">
+      <i class="fa-brands fa-telegram"></i> Telegram
+    </a>
+  </div>
+</footer>
+
+<!-- ════ SCRIPTS ══════════════════════════ -->
+<script>
+  /* ─── COUNTDOWN ─── */
+  (function () {
+    var target = new Date('2026-07-13T00:00:00');
+    function tick() {
+      var now  = new Date();
+      var diff = target - now;
+      if (diff <= 0) {
+        document.getElementById('cd-d').textContent = '00';
+        document.getElementById('cd-h').textContent = '00';
+        document.getElementById('cd-m').textContent = '00';
+        document.getElementById('cd-s').textContent = '00';
+        return;
+      }
+      var d = Math.floor(diff / 86400000);
+      var h = Math.floor((diff % 86400000) / 3600000);
+      var m = Math.floor((diff % 3600000) / 60000);
+      var s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('cd-d').textContent = String(d).padStart(2, '0');
+      document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
+      document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
+      document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  /* ─── FORM SUBMIT ─── */
+  /*
+   * Replace the placeholder below with your deployed Google Apps Script URL.
+   * Instructions are in apps-script.js.
+   */
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzHn2g85BCZSnfAjV6Hg9RxyMRo1ZuSDIwhU1U2OlFUKsTKFrcEK_ZWh7ifq5B8tPQ/exec';
+
+  document.getElementById('reg-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var confirmed = document.getElementById('f-confirm').checked;
+    if (!confirmed) {
+      alert('Please confirm that you have followed @Ginox_Official on X and joined the Telegram channel before submitting.');
+      return;
+    }
+
+    var btn = document.getElementById('sub-btn');
+    btn.textContent = 'Submitting…';
+    btn.disabled = true;
+
+    var params = new URLSearchParams({
+      fullName:   document.getElementById('f-name').value.trim(),
+      email:      document.getElementById('f-email').value.trim(),
+      phone:      document.getElementById('f-phone').value.trim(),
+      xUsername:  document.getElementById('f-x').value.trim(),
+      telegram:   document.getElementById('f-tg').value.trim(),
+      experience: document.getElementById('f-exp').value,
+      nahims:     document.getElementById('f-nahims').checked ? 'Yes' : 'No',
+      confirmed:  'Yes'
+    });
+
+    fetch(SCRIPT_URL + '?' + params.toString(), { method: 'GET', mode: 'no-cors' })
+      .catch(function () { /* opaque no-cors response is expected */ })
+      .finally(function () {
+        document.getElementById('form-body').style.display = 'none';
+        document.getElementById('success-wrap').style.display = 'block';
+      });
+  });
+</script>
+
+</body>
+</html>
