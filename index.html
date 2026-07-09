@@ -961,13 +961,6 @@
           </p>
         </div>
 
-        <label class="chk-row" for="f-nahims">
-          <input type="checkbox" id="f-nahims" name="nahims" />
-          <span class="chk-text">
-            I am currently a student of <strong>NAHIMS SW</strong>
-          </span>
-        </label>
-
         <label class="chk-row" for="f-confirm">
           <input type="checkbox" id="f-confirm" name="confirmed" required />
           <span class="chk-text">
@@ -1174,28 +1167,6 @@
   </div>
 </section>
 
-<!-- ════ PARTNERSHIP ═════════════════════ -->
-<section class="sec">
-  <div class="section-tag">Partnership</div>
-  <div class="partner-wrap">
-    <div class="partner-copy">
-      <h3>Proudly Partnering with NAHIMS SW</h3>
-      <p>
-        Profitable Trader is in official partnership with NAHIMS SW. If you are a current NAHIMS student,
-        please indicate this when completing your registration form.
-      </p>
-      <p>
-        This partnership exists to recognise students who are already actively investing in their education
-        and future. Identifying your NAHIMS status accurately helps us tailor the cohort experience and
-        acknowledge your existing commitment to learning.
-      </p>
-    </div>
-    <div class="partner-badge">
-      <strong>NAHIMS SW</strong>
-      <small>Official Partner</small>
-    </div>
-  </div>
-</section>
 
 <!-- ════ FINAL CTA ════════════════════════ -->
 <section class="cta-sec">
@@ -1289,7 +1260,6 @@
       xUsername:  xUsername,
       telegram:   document.getElementById('f-tg').value.trim(),
       experience: document.getElementById('f-exp').value,
-      nahims:     document.getElementById('f-nahims').checked ? 'Yes' : 'No',
       referredBy: referredBy || 'None',
       confirmed:  'Yes'
     });

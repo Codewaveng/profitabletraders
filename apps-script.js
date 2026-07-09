@@ -62,7 +62,6 @@ function doGet(e) {
         'X Username',
         'Telegram Username',
         'Experience Level',
-        'NAHIMS Student',
         'Referred By',
         'Confirmed Follow'
       ];
@@ -86,7 +85,6 @@ function doGet(e) {
       p.xUsername  || '',
       p.telegram   || '',
       p.experience || '',
-      p.nahims     || 'No',
       p.referredBy || 'None',
       p.confirmed  || 'No'
     ]);
